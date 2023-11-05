@@ -2,10 +2,12 @@ import { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 import Swal from "sweetalert2";
+import { FcGoogle } from "react-icons/fc";
+
 
 const SignIn = () => {
 
-    const { signIn } = useContext(AuthContext);
+    const { signIn, signInWithGoogle } = useContext(AuthContext);
     const location = useLocation();
     const navigate = useNavigate();
 
@@ -40,6 +42,33 @@ const SignIn = () => {
             .catch(error => {
                 console.error(error)
             });
+    }
+
+    const handleGoogleSignIn = () => {
+        signInWithGoogle()
+            .then(result => {
+                console.log(result.user)
+                const Toast = Swal.mixin({
+                  toast: true,
+                  position: "top-end",
+                  showConfirmButton: false,
+                  timer: 3000,
+                  timerProgressBar: true,
+                  didOpen: (toast) => {
+                    toast.addEventListener("mouseenter", Swal.stopTimer);
+                    toast.addEventListener("mouseleave", Swal.resumeTimer);
+                  },
+                });
+
+                Toast.fire({
+                  icon: "success",
+                  title: "Signed in successfully",
+                });
+                navigate(location?.state ? location.state : "/");
+            })
+            .catch(error => {
+                console.error(error);
+        })
     }
     return (
       <div>
@@ -92,7 +121,7 @@ const SignIn = () => {
                 </div>
                 <div className="form-control mt-6">
                   <input
-                    className="btn bg-pink-700 text-white"
+                    className="btn bg-pink-700 text-xl text-white"
                     type="submit"
                     value="SignIn"
                   />
@@ -107,6 +136,13 @@ const SignIn = () => {
                     to join our community.
                   </p>
                 }
+                <div className="text-center">
+                  <h1 className="py-2">Or</h1>
+                  <button onClick={handleGoogleSignIn} className="hover:text-white w-full text-xl border-2 rounded-lg flex justify-center items-center py-2 gap-2 hover:bg-pink-700  border-pink-700">
+                    <FcGoogle />
+                    Google
+                  </button>
+                </div>
               </form>
             </div>
           </div>

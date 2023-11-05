@@ -2,10 +2,12 @@ import { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 import Swal from "sweetalert2";
+import { FcGoogle } from "react-icons/fc";
+
 
 const SignUp = () => {
 
-    const { createUser } = useContext(AuthContext);
+    const { createUser, signInWithGoogle } = useContext(AuthContext);
         const location = useLocation();
         const navigate = useNavigate();
 
@@ -13,9 +15,10 @@ const SignUp = () => {
       e.preventDefault();
         const form = new FormData(e.currentTarget);
         const name = form.get('name');
+        const photo = form.get("photo");
         const email = form.get('email');
         const password = form.get('password');
-        console.log(form, name, email, password);
+        console.log(form, name, photo, email, password);
 
         createUser(email, password)
             .then(result => {
@@ -42,7 +45,32 @@ const SignUp = () => {
                 console.error(error)
             });
     };
+const handleGoogleSignUp = () => {
+  signInWithGoogle()
+    .then((result) => {
+      console.log(result.user);
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener("mouseenter", Swal.stopTimer);
+          toast.addEventListener("mouseleave", Swal.resumeTimer);
+        },
+      });
 
+      Toast.fire({
+        icon: "success",
+        title: "Signed in successfully",
+      });
+      navigate(location?.state ? location.state : "/");
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+};
     return (
       <div>
         <div className="hero min-h-screen">
@@ -73,6 +101,18 @@ const SignUp = () => {
                 </div>
                 <div className="form-control">
                   <label className="label">
+                    <span className="label-text text-pink-500">Photo URL</span>
+                  </label>
+                  <input
+                    type="text"
+                    name="photo"
+                    placeholder="photo URL"
+                    className="input input-bordered"
+                    required
+                  />
+                </div>
+                <div className="form-control">
+                  <label className="label">
                     <span className="label-text text-pink-500">Email</span>
                   </label>
                   <input
@@ -97,7 +137,7 @@ const SignUp = () => {
                 </div>
                 <div className="form-control mt-6">
                   <input
-                    className="btn bg-pink-700 text-white"
+                    className="btn bg-pink-700 text-xl text-white"
                     type="submit"
                     value="SignUp"
                   />
@@ -113,6 +153,16 @@ const SignUp = () => {
                     to join our community.
                   </p>
                 }
+                <div className="text-center">
+                  <h1 className="py-2">Or</h1>
+                  <button
+                    onClick={handleGoogleSignUp}
+                    className="hover:text-white w-full text-xl border-2 rounded-lg flex justify-center items-center py-2 gap-2 hover:bg-pink-700  border-pink-700"
+                  >
+                    <FcGoogle />
+                    Google
+                  </button>
+                </div>
               </form>
             </div>
           </div>
