@@ -4,6 +4,8 @@ import { useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 import Swal from "sweetalert2";
 
+
+
 const Navbar = () => {
 
   const { user, signOUT } = useContext(AuthContext);
@@ -35,7 +37,7 @@ const Navbar = () => {
     const navBtn = (
       <>
         <div className="">
-          <ul className="flex gap-4 text-xl font-bold">
+          <ul className="flex gap-4 font-bold">
             <NavLink
               className="hover:text-pink-700 hover:border-b-2 border-pink-700"
               to="/"
@@ -117,6 +119,19 @@ const Navbar = () => {
           </div>
           <div className="navbar-end gap-4">
             <ThemeToggle />
+            {user && (
+              <>
+                <img
+                  src={user.photoURL}
+                  alt={user.displayName}
+                  className="rounded-full w-10 h-10"
+                />
+                <span className="text-pink-700 font-bold">
+                  {user.displayName}
+                </span>
+              </>
+            )}
+
             {user ? (
               <button
                 onClick={handleSignOut}
