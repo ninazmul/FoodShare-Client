@@ -10,6 +10,7 @@ import FoodReq from "../Pages/FoodReq";
 import AvailableFood from "../Pages/AvailableFood";
 import SignIn from "../Pages/LogReg/SignIn";
 import SignUp from "../Pages/LogReg/SignUp";
+import PrivateRoute from "./PrivateRoute";
 
 
 const router = createBrowserRouter([
@@ -23,33 +24,45 @@ const router = createBrowserRouter([
         element: <Home></Home>,
       },
       {
-          path: "/available",
-          element: <AvailableFood></AvailableFood>
-        },
-        {
-            path: '/add',
-            element: <AddFood></AddFood>
-        },
-        {
-            path: '/manage',
-            element: <ManageFood></ManageFood>
-        },
-        {
-            path: '/request',
-            element: <FoodReq></FoodReq>
-        },
-        {
-            path: "/about",
-            element: <About></About>
-        },
-        {
-            path: "/signIn",
-            element: <SignIn></SignIn>
-        },
-        {
-            path: '/signUp',
-            element: <SignUp></SignUp>
-        }
+        path: "/available",
+        element: <AvailableFood></AvailableFood>,
+      },
+      {
+        path: "/add",
+        element: (
+          <PrivateRoute>
+            <AddFood></AddFood>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/manage",
+        element: (
+          <PrivateRoute>
+            <ManageFood></ManageFood>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/request",
+        element: (
+          <PrivateRoute>
+            <FoodReq></FoodReq>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/about",
+        element: <About></About>,
+      },
+      {
+        path: "/signIn",
+        element: <SignIn></SignIn>,
+      },
+      {
+        path: "/signUp",
+        element: <SignUp></SignUp>,
+      },
     ],
   },
 ]);
