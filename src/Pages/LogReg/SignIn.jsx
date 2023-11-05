@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
-
+import Swal from "sweetalert2";
 
 const SignIn = () => {
 
@@ -19,6 +19,22 @@ const SignIn = () => {
         signIn(email, password)
             .then(result => {
                 console.log(result.user)
+                const Toast = Swal.mixin({
+                  toast: true,
+                  position: "top-end",
+                  showConfirmButton: false,
+                  timer: 3000,
+                  timerProgressBar: true,
+                  didOpen: (toast) => {
+                    toast.addEventListener("mouseenter", Swal.stopTimer);
+                    toast.addEventListener("mouseleave", Swal.resumeTimer);
+                  },
+                });
+
+                Toast.fire({
+                  icon: "success",
+                  title: "Signed in successfully",
+                });
                 navigate(location?.state ? location.state : '/')
             })
             .catch(error => {

@@ -2,7 +2,7 @@ import { Link, NavLink } from "react-router-dom";
 import ThemeToggle from "./ThemeToggle";
 import { useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
-
+import Swal from "sweetalert2";
 
 const Navbar = () => {
 
@@ -12,6 +12,22 @@ const Navbar = () => {
     signOUT()
       .then()
       .catch();
+    const Toast = Swal.mixin({
+      toast: true,
+      position: "top-end",
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.addEventListener("mouseenter", Swal.stopTimer);
+        toast.addEventListener("mouseleave", Swal.resumeTimer);
+      },
+    });
+
+    Toast.fire({
+      icon: "success",
+      title: "Signed out successfully",
+    });
     
   }
 
