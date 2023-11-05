@@ -1,34 +1,67 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import ThemeToggle from "./ThemeToggle";
+import { useContext } from "react";
+import { AuthContext } from "../../Providers/AuthProvider";
 
 
 const Navbar = () => {
 
+  const { user, signOUT } = useContext(AuthContext);
+
+  const handleSignOut = () => {
+    signOUT()
+      .then()
+      .catch();
+    
+  }
+
+
     const navBtn = (
       <>
-        <div className=''>
+        <div className="">
           <ul className="flex gap-4 text-xl font-bold">
-            <NavLink className='hover:text-pink-700 hover:border-b-2 border-pink-700' to="/">
+            <NavLink
+              className="hover:text-pink-700 hover:border-b-2 border-pink-700"
+              to="/"
+            >
               <li>Home</li>
             </NavLink>
-            <NavLink className='hover:text-pink-700 hover:border-b-2 border-pink-700' to="/available">
+            <NavLink
+              className="hover:text-pink-700 hover:border-b-2 border-pink-700"
+              to="/available"
+            >
               <li>Available Foods</li>
             </NavLink>
-            <NavLink className='hover:text-pink-700 hover:border-b-2 border-pink-700' to="/add">
+            <NavLink
+              className="hover:text-pink-700 hover:border-b-2 border-pink-700"
+              to="/add"
+            >
               <li>Add Food</li>
             </NavLink>
-            <NavLink className='hover:text-pink-700 hover:border-b-2 border-pink-700' to="/manage">
+            <NavLink
+              className="hover:text-pink-700 hover:border-b-2 border-pink-700"
+              to="/manage"
+            >
               <li>Manage My Foods</li>
             </NavLink>
-            <NavLink className='hover:text-pink-700 hover:border-b-2 border-pink-700' to="/request">
+            <NavLink
+              className="hover:text-pink-700 hover:border-b-2 border-pink-700"
+              to="/request"
+            >
               <li>My Food Request</li>
+            </NavLink>
+            <NavLink
+              className="hover:text-pink-700 hover:border-b-2 border-pink-700"
+              to="/about"
+            >
+              <li>About Us</li>
             </NavLink>
           </ul>
         </div>
       </>
     );
     return (
-      <div>
+      <div className="">
         <div className="navbar">
           <div className="navbar-start">
             <div className="dropdown">
@@ -55,21 +88,31 @@ const Navbar = () => {
                 {navBtn}
               </ul>
             </div>
-            <a className="btn btn-ghost normal-case text-xl">
+            <Link className="btn btn-ghost normal-case text-xl">
               <img
                 className="w-32"
                 src="/public/Screenshot_from_2023-11-05_12-27-59-removebg-preview.png"
                 alt=""
               />
-            </a>
+            </Link>
           </div>
           <div className="navbar-center hidden lg:flex">
             <ul className="menu menu-horizontal px-1">{navBtn}</ul>
           </div>
           <div className="navbar-end gap-4">
-            <ThemeToggle/>
-
-            <a className="btn">Button</a>
+            <ThemeToggle />
+            {user ? (
+              <button
+                onClick={handleSignOut}
+                className="btn bg-pink-700 text-white"
+              >
+                SignOut
+              </button>
+            ) : (
+              <Link to="/signIn" className="btn bg-pink-700 text-white">
+                SignIn
+              </Link>
+            )}
           </div>
         </div>
       </div>
