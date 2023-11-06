@@ -8,11 +8,11 @@ const Header = () => {
           <div className="absolute z-10">
             <div className="hero">
               <div className="hero-content py-20 text-center">
-                <div className="w-2/3">
-                  <h1 className="text-5xl font-bold text-pink-700">
+                <div className="md:w-2/3">
+                  <h1 className="md:text-5xl text-2xl font-bold text-pink-700">
                     Spreading Love, One Meal Share at a Time!
                   </h1>
-                  <p className="py-6 text-pink-900 text-xl">
+                  <p className="py-6 text-pink-900 md:text-xl">
                     "Food Share Community is a dedicated group of individuals
                     committed to providing nourishment and support to homeless
                     and underserved populations. Our mission is to reduce food

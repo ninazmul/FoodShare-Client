@@ -6,7 +6,7 @@ import Footer from "../Pages/Nav-Foot/Footer";
 
 const Root = () => {
     return (
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-7xl mx-auto overflow-hidden">
         <ThemeProvider>
           <Navbar></Navbar>
           <div className="min-h-[400px]">

@@ -37,7 +37,7 @@ const Navbar = () => {
     const navBtn = (
       <>
         <div className="">
-          <ul className="flex gap-4 font-bold">
+          <ul className="lg:flex gap-4 font-bold">
             <NavLink
               className="hover:text-pink-700 hover:border-b-2 border-pink-700"
               to="/"
@@ -86,7 +86,7 @@ const Navbar = () => {
               <label tabIndex={0} className="btn btn-ghost lg:hidden">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5"
+                  className="h-5 w-5 text-pink-700"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -101,7 +101,7 @@ const Navbar = () => {
               </label>
               <ul
                 tabIndex={0}
-                className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+                className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow glass z-50 rounded-box w-52"
               >
                 {navBtn}
               </ul>
@@ -117,33 +117,52 @@ const Navbar = () => {
           <div className="navbar-center hidden lg:flex">
             <ul className="menu menu-horizontal px-1">{navBtn}</ul>
           </div>
-          <div className="navbar-end gap-4">
-            <ThemeToggle />
-            {user && (
-              <>
-                <img
-                  src={user.photoURL}
-                  alt={user.displayName}
-                  className="rounded-full w-10 h-10"
-                />
-                <span className="text-pink-700 font-bold">
-                  {user.displayName}
-                </span>
-              </>
-            )}
 
-            {user ? (
-              <button
-                onClick={handleSignOut}
-                className="btn bg-pink-700 text-white"
+          <div className="navbar-end flex items-center gap-4">
+            <div>
+              <ThemeToggle />
+            </div>
+            <div className="dropdown dropdown-end">
+              <label tabIndex={0} className="">
+                <div>
+                  {user ? (
+                    <>
+                      <div className="flex items-center gap-4">
+                        <p className="text-pink-700 font-bold">
+                          {user.displayName}
+                        </p>
+                        <img
+                          src={user.photoURL}
+                          alt={user.displayName}
+                          className="rounded-full w-10 h-10"
+                        />
+                      </div>
+                    </>
+                  ) : (
+                    <Link to="/signIn" className="btn bg-pink-700 text-white">
+                      SignIn
+                    </Link>
+                  )}
+                </div>
+              </label>
+              <ul
+                tabIndex={0}
+                className="menu menu-sm dropdown-content mt-3 z-50 p-2 shadow  rounded-box w-52"
               >
-                SignOut
-              </button>
-            ) : (
-              <Link to="/signIn" className="btn bg-pink-700 text-white">
-                SignIn
-              </Link>
-            )}
+                {user ? (
+                  <button
+                    onClick={handleSignOut}
+                    className="btn bg-pink-700 text-white"
+                  >
+                    SignOut
+                  </button>
+                ) : (
+                  <Link to="/signIn" className="btn bg-pink-700 text-white">
+                    SignIn
+                  </Link>
+                )}
+              </ul>
+            </div>
           </div>
         </div>
       </div>
