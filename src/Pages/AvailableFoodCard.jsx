@@ -1,8 +1,10 @@
+import { Link } from "react-router-dom";
 
 
 const AvailableFoodCard = ({ food }) => {
     
-    const {
+  const {
+      _id,
       foodImage,
       foodName,
       foodQuantity,
@@ -27,18 +29,27 @@ const AvailableFoodCard = ({ food }) => {
                 Quantity:{" "}
                 <span className="text-pink-700 font-bold">{foodQuantity}</span>
               </p>
-                    </div>
-                    <div className="flex justify-between items-center">
-                        <p className="text-xl font-bold">{displayName}</p>
-                        <img className="w-10 rounded-full border-2 border-pink-700" src={photoURL} alt="" />
-                    </div>
+            </div>
+            <div className="flex justify-between items-center">
+              <p className="text-xl font-bold">{displayName}</p>
+              <img
+                className="w-10 rounded-full border-2 border-pink-700"
+                src={photoURL}
+                alt=""
+              />
+            </div>
             <p>{additionalNotes}</p>
             <p>Pickup Location: {pickupLocation}</p>
             <p>Expired In: {expiredDate}</p>
 
             <p></p>
             <div className="card-actions justify-end">
-              <button className="btn bg-pink-700 text-white w-full">View Details!</button>
+              <Link
+                to={`/available/${_id}`}
+                className="btn bg-pink-700 text-white w-full"
+              >
+                View Details!
+              </Link>
             </div>
           </div>
         </div>
