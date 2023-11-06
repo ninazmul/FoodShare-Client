@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import AvailableFoodCard from "./AvailableFoodCard";
-import { BsSearch } from "react-icons/bs";
 
 const AvailableFood = () => {
   const [available, setAvailable] = useState([]);
@@ -13,12 +12,9 @@ const AvailableFood = () => {
       .then((data) => setAvailable(data));
   }, []);
 
-  // Filter available foods based on the search query
   const filteredAvailableFoods = available.filter((food) =>
     food.foodName.toLowerCase().includes(searchQuery.toLowerCase())
   );
-
-  // Sort available foods based on Expire Date
   const sortedAvailableFoods = [...filteredAvailableFoods].sort((a, b) => {
     if (sortOrder === "ascending") {
       return new Date(a.expiredDate) - new Date(b.expiredDate);
@@ -46,7 +42,7 @@ const AvailableFood = () => {
           members. If you're in need, you can request these food items to help
           fulfill your hunger.
         </p>
-        <div className="mt-4 mb-4 text-center flex justify-between">
+        <div className="mt-4 mb-4 text-center flex justify-between items-center">
           <input
             type="text"
             placeholder="Search by Food Name"
@@ -54,14 +50,12 @@ const AvailableFood = () => {
             value={searchQuery}
             onChange={handleSearch}
           />
-          <div className="text-center mb-4">
-            <button className="btn bg-pink-700 text-white" onClick={handleSort}>
-              Sort by Expire Date ({sortOrder === "ascending" ? "Asc" : "Desc"})
-            </button>
-          </div>
+          <button className="btn bg-pink-700 text-white" onClick={handleSort}>
+            Sort by Expire Date ({sortOrder === "ascending" ? "Asc" : "Desc"})
+          </button>
         </div>
       </div>
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
         {sortedAvailableFoods.map((food) => (
           <AvailableFoodCard key={food._id} food={food}></AvailableFoodCard>
         ))}
