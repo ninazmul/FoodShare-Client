@@ -8,7 +8,7 @@ const Home = () => {
   const [maxFood, setMaxFood] = useState([]);
 
   useEffect(() => {
-    fetch("available.json")
+    fetch("http://localhost:5000/available")
       .then((res) => res.json())
       .then((data) => {
         const sortedData = [...data].sort(
@@ -26,7 +26,7 @@ const Home = () => {
     <div>
       <Header></Header>
       <div className="py-4">
-        <div>
+        <div className="py-6">
           <h1 className="text-5xl text-pink-700 font-bold text-center">
             Featured Foods: {maxFood.length}
           </h1>
@@ -36,7 +36,7 @@ const Home = () => {
             to help fulfill your hunger.
           </p>
         </div>
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
           {maxFood.map((food) => (
             <AvailableFoodCard key={food._id} food={food} />
           ))}

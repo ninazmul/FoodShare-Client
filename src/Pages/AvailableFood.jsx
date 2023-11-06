@@ -7,7 +7,7 @@ const AvailableFood = () => {
   const [sortOrder, setSortOrder] = useState("ascending");
 
   useEffect(() => {
-    fetch("available.json")
+    fetch("http://localhost:5000/available")
       .then((res) => res.json())
       .then((data) => setAvailable(data));
   }, []);
