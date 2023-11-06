@@ -52,19 +52,19 @@ const AuthProvider = ({ children }) => {
     return signOut(auth);
   };
 
-  const updateProfileInfo = async (name, photoURL) => {
+  const updateProfileInfo = async (name, photo) => {
     const currentUser = auth.currentUser; 
 
     try {
       await updateProfile(currentUser, {
         displayName: name,
-        photoURL: photoURL,
+        photoURL: photo,
       });
 
       setUser({
         ...user,
         displayName: name,
-        photoURL: photoURL,
+        photoURL: photo,
       });
     } catch (error) {
       console.error("Error updating profile:", error);
