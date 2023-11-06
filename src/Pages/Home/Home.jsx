@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import Header from "./Header/Header";
 import { useEffect, useState } from "react";
 import AvailableFoodCard from "../AvailableFoodCard";
+import Marquee from "react-fast-marquee";
 
 const Home = () => {
   const [maxFood, setMaxFood] = useState([]);
@@ -59,6 +60,37 @@ const Home = () => {
               Learn More
             </Link>
           </p>
+        </div>
+        <div className="py-6">
+          <h1 className="text-5xl py-2 text-pink-700 font-bold text-center">
+            Our Partners
+          </h1>
+          <Marquee>
+            <div className="flex space-x-52">
+              <img
+                className="w-40"
+                src="/public/logo/245047432_393327432385210_1168424083158859995_n.png"
+                alt=""
+              />
+              <img
+                className="w-40"
+                src="/public/logo/blood worrior bangladesh logo.png"
+                alt=""
+              />
+              <img
+                className="w-40"
+                src="/public/logo/HEALTH HAVEN.png"
+                alt=""
+              />
+              <img className="w-40" src="/public/logo/N.I. Logo.png" alt="" />
+              <img className="w-40" src="/public/logo/Untitled-1.png" alt="" />
+              <img
+                className="w-40"
+                src="/public/logo/wild world logo.pngv.png"
+                alt=""
+              />
+            </div>
+          </Marquee>
         </div>
       </div>
     </div>
