@@ -65,9 +65,9 @@ const handleAdd = (e) => {
   return (
     <div className="hero min-h-screen ">
       <div className="hero-content flex-col lg:flex-row-reverse">
-        <div className="card w-full shadow-2xl glass">
+        <div className="card  md:w-full shadow-2xl glass">
           <form onSubmit={handleAdd} className="card-body">
-            <div className="flex">
+            <div className="md:flex">
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Food Name</span>
@@ -80,7 +80,7 @@ const handleAdd = (e) => {
                   required
                 />
               </div>
-              <div className="form-control w-1/2">
+              <div className="form-control md:w-1/2">
                 <label className="label">
                   <span className="label-text">Food Quantity</span>
                 </label>
@@ -107,7 +107,7 @@ const handleAdd = (e) => {
                 />
               </div>
             </div>
-            <div className="flex">
+            <div className="md:flex">
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Food Image</span>
@@ -133,8 +133,8 @@ const handleAdd = (e) => {
                 />
               </div>
             </div>
-            <div className="flex">
-              <div className="form-control w-1/2">
+            <div className="md:flex">
+              <div className="form-control md:w-1/2">
                 <label className="label">
                   <span className="label-text">Request Date</span>
                 </label>
@@ -146,7 +146,7 @@ const handleAdd = (e) => {
                   required
                 />
               </div>
-              <div className="form-control w-1/2">
+              <div className="form-control md:w-1/2">
                 <label className="label">
                   <span className="label-text">Expire Date</span>
                 </label>
@@ -159,8 +159,8 @@ const handleAdd = (e) => {
                 />
               </div>
             </div>
-            <div className="flex">
-              <div className="form-control w-1/2">
+            <div className="md:flex">
+              <div className="form-control md:w-1/2">
                 <label className="label">
                   <span className="label-text">Donor Name</span>
                 </label>
@@ -172,7 +172,7 @@ const handleAdd = (e) => {
                   className="input input-bordered"
                 />
               </div>
-              <div className="form-control w-1/2">
+              <div className="form-control md:w-1/2">
                 <label className="label">
                   <span className="label-text">Donor Email</span>
                 </label>
@@ -185,7 +185,7 @@ const handleAdd = (e) => {
                 />
               </div>
             </div>
-            <div className="flex items-center">
+            <div className="md:flex items-center">
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Donation Amount</span>

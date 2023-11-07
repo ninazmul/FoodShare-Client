@@ -14,7 +14,7 @@ const FoodDetails = () => {
     const foodName = form.foodName.value;
     const foodId = form.foodId.value;
     const pickupLocation = form.pickupLocation.value;
-    const expireDate = form.expireDate.value;
+    const expiredDate = form.expiredDate.value;
     const foodImage = form.foodImage.value;
     const donorName = form.donorName.value;
     const requestDate = form.requestDate.value;
@@ -22,12 +22,16 @@ const FoodDetails = () => {
     const userEmail = form.userEmail.value;
     const donationAmount = form.donationAmount.value;
     const Notes = form.Notes.value;
+    const available = form.available.value;
+    const photoURL = form.photoURL.value;
+    const foodQuantity = form.foodQuantity.value;
+
 
     const newRequest = {
       foodName,
       foodId,
       pickupLocation,
-      expireDate,
+      expiredDate,
       foodImage,
       donorName,
       requestDate,
@@ -35,6 +39,9 @@ const FoodDetails = () => {
       userEmail,
       donationAmount,
       Notes,
+      available,
+      photoURL,
+      foodQuantity,
     };
     console.log(newRequest);
 
@@ -98,13 +105,13 @@ const FoodDetails = () => {
 
   return (
     <div>
-      <h1 className="text-5xl text-pink-700 font-bold text-center">
+      <h1 className="text-3xl md:text-5xl text-pink-700 font-bold text-center">
         Food Item: {food.foodName}
       </h1>
 
       <figure>
         <img
-          className="w-full h-[500px] rounded-lg relative"
+          className="w-full md:h-[500px] rounded-lg relative"
           src={food.foodImage}
           alt=""
         />
@@ -114,26 +121,26 @@ const FoodDetails = () => {
       </figure>
       <div className="flex items-center justify-between">
         {" "}
-        <p className="text-end text-3xl font-bold">
+        <p className="text-end text-xl md:text-3xl font-bold">
           Quantity:{" "}
           <span className="text-pink-700 font-bold">{food.foodQuantity}</span>
         </p>
-        <p className="text-3xl font-bold ">
+        <p className="text-xl md:text-3xl font-bold ">
           Expired In:
           <span className="text-pink-700"> {food.expiredDate}</span>
         </p>
       </div>
       <div className="flex justify-between items-center">
-        <p className="text-4xl font-bold">
+        <p className="text-2xl md:text-4xl font-bold">
           Donor Name: <span className=" text-pink-700">{food.displayName}</span>
         </p>
         <img
-          className="w-20 rounded-full border-2 border-pink-700"
+          className="w-16 md:w-20 rounded-full border-2 border-pink-700"
           src={food.photoURL}
           alt=""
         />
       </div>
-      <div className="flex justify-between text-2xl font-bold">
+      <div className="flex justify-between md:text-2xl font-bold">
         <p>
           Note: <span className="text-pink-700">{food.additionalNotes}</span>
         </p>
@@ -143,7 +150,6 @@ const FoodDetails = () => {
         </p>
       </div>
       <div className="py-6">
-        {/* Open the modal using document.getElementById('ID').showModal() method */}
         <button
           className="btn w-full bg-pink-700 text-white text-xl"
           onClick={() => document.getElementById("my_modal_2").showModal()}
@@ -204,7 +210,7 @@ const FoodDetails = () => {
                   </label>
                   <input
                     type="text"
-                    name="expireDate"
+                    name="expiredDate"
                     placeholder="Food Id"
                     defaultValue={food.expiredDate}
                     className="input input-bordered"
@@ -213,20 +219,38 @@ const FoodDetails = () => {
                   />
                 </div>
               </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Food Image</span>
-                </label>
-                <img className="rounded-lg h-40" src={food.foodImage} alt="" />
-                <input
-                  type="text"
-                  name="foodImage"
-                  placeholder="Food Image"
-                  defaultValue={food.foodImage}
-                  className="input input-bordered"
-                  required
-                  readOnly={true}
-                />
+              <img className="rounded-lg h-40" src={food.foodImage} alt="" />
+              <div className="flex">
+                <div className="form-control w-1/2">
+                  <label className="label">
+                    <span className="label-text">Food Image</span>
+                  </label>
+
+                  <input
+                    type="text"
+                    name="foodImage"
+                    placeholder="Food Image"
+                    defaultValue={food.foodImage}
+                    className="input input-bordered"
+                    required
+                    readOnly={true}
+                  />
+                </div>
+                <div className="form-control w-1/2">
+                  <label className="label">
+                    <span className="label-text">Donor Image</span>
+                  </label>
+
+                  <input
+                    type="text"
+                    name="photoURL"
+                    placeholder="Donor Image"
+                    defaultValue={food.photoURL}
+                    className="input input-bordered"
+                    required
+                    readOnly={true}
+                  />
+                </div>
               </div>
               <div className="flex">
                 <div className="form-control w-1/2">
@@ -289,17 +313,45 @@ const FoodDetails = () => {
                   />
                 </div>
               </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Donation Amount</span>
-                </label>
-                <input
-                  type="number"
-                  name="donationAmount"
-                  placeholder="$10"
-                  defaultValue={10}
-                  className="input input-bordered"
-                />
+              <div className="flex">
+                <div className="form-control w-1/3">
+                  <label className="label">
+                    <span className="label-text">Donation Amount</span>
+                  </label>
+                  <input
+                    type="number"
+                    name="donationAmount"
+                    placeholder="$10"
+                    defaultValue={10}
+                    className="input input-bordered"
+                  />
+                </div>
+                <div className="form-control w-1/3">
+                  <label className="label">
+                    <span className="label-text">Food Quantity</span>
+                  </label>
+                  <input
+                    type="number"
+                    name="foodQuantity"
+                    placeholder="Food Quantity"
+                    defaultValue={food.foodQuantity}
+                    className="input input-bordered"
+                  />
+                </div>
+                <div className="form-control w-1/3">
+                  <label className="label">
+                    <span className="label-text">Available Status</span>
+                  </label>
+                  <input
+                    type="text"
+                    name="available"
+                    placeholder="Is it Available"
+                    defaultValue="Available"
+                    className="input input-bordered"
+                    required
+                    readOnly={true}
+                  />
+                </div>
               </div>
               <div className="form-control">
                 <label className="label">
@@ -322,7 +374,6 @@ const FoodDetails = () => {
                 />
               </div>
             </form>
-
             <form
               method="dialog"
               className="modal-backdrop flex justify-center"
