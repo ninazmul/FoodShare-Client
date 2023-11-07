@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
 
@@ -7,7 +7,38 @@ const FoodDetails = () => {
   const [food, setFood] = useState(null);
   const { user } = useContext(AuthContext);
 
-  // Define currentTime and set its initial value
+  const handleRequest = e => {
+    e.preventDefault();
+    const form = e.target;
+    const foodName = form.foodName.value;
+    const foodId = form.foodId.value;
+    const pickupLocation = form.pickupLocation.value;
+    const expireDate = form.expireDate.value;
+    const foodImage = form.foodImage.value;
+    const donorName = form.donorName.value;
+    const requestDate = form.requestDate.value;
+    const donorEmail = form.donorEmail.value;
+    const userEmail = form.userEmail.value;
+    const donationAmount = form.donationAmount.value;
+    const Notes = form.Notes.value;
+
+    const request = {
+      foodName,
+      foodId,
+      pickupLocation,
+      expireDate,
+      foodImage,
+      donorName,
+      requestDate,
+      donorEmail,
+      userEmail,
+      donationAmount,
+      Notes
+    };
+    console.log(request);
+  };
+
+
   const currentTime = new Date().toISOString().slice(0, 16);
 
   useEffect(() => {
@@ -93,164 +124,189 @@ const FoodDetails = () => {
           Request for food!
         </button>
         <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
-          <div className="modal-box">
-            <form className="card-body">
-              <div className="flex">
-                <div className="form-control w-1/2">
+            <div className="modal-box">
+              <form onSubmit={handleRequest} className="card-body">
+                <div className="flex">
+                  <div className="form-control w-1/2">
+                    <label className="label">
+                      <span className="label-text">Food Name</span>
+                    </label>
+                    <input
+                      type="text"
+                      name="foodName"
+                      placeholder="Food Name"
+                      defaultValue={food.foodName}
+                      className="input input-bordered"
+                      required
+                      readOnly={true}
+                    />
+                  </div>
+                  <div className="form-control w-1/2">
+                    <label className="label">
+                      <span className="label-text">Food Id</span>
+                    </label>
+                    <input
+                      type="text"
+                      name="foodId"
+                      placeholder="Food Id"
+                      defaultValue={food._id}
+                      className="input input-bordered"
+                      required
+                      readOnly={true}
+                    />
+                  </div>
+                </div>
+                <div className="flex">
+                  <div className="form-control w-1/2">
+                    <label className="label">
+                      <span className="label-text">Pickup Location</span>
+                    </label>
+                    <input
+                      type="text"
+                      name="pickupLocation"
+                      placeholder="Food Name"
+                      defaultValue={food.pickupLocation}
+                      className="input input-bordered"
+                      required
+                      readOnly={true}
+                    />
+                  </div>
+                  <div className="form-control w-1/2">
+                    <label className="label">
+                      <span className="label-text">Expire Date</span>
+                    </label>
+                    <input
+                      type="text"
+                      name="expireDate"
+                      placeholder="Food Id"
+                      defaultValue={food.expiredDate}
+                      className="input input-bordered"
+                      required
+                      readOnly={true}
+                    />
+                  </div>
+                </div>
+                <div className="form-control">
                   <label className="label">
-                    <span className="label-text">Food Name</span>
+                    <span className="label-text">Food Image</span>
+                  </label>
+                  <img
+                    className="rounded-lg h-40"
+                    src={food.foodImage}
+                    alt=""
+                  />
+                  <input
+                    type="text"
+                    name="foodImage"
+                    placeholder="Food Image"
+                    defaultValue={food.foodImage}
+                    className="input input-bordered"
+                    required
+                    readOnly={true}
+                  />
+                </div>
+                <div className="flex">
+                  <div className="form-control w-1/2">
+                    <label className="label">
+                      <span className="label-text">Donor Name</span>
+                    </label>
+                    <input
+                      type="text"
+                      name="donorName"
+                      placeholder="Donor Name"
+                      defaultValue={food.displayName}
+                      className="input input-bordered"
+                      required
+                      readOnly={true}
+                    />
+                  </div>
+                  <div className="form-control w-1/2">
+                    <label className="label">
+                      <span className="label-text">Request Date</span>
+                    </label>
+                    <input
+                      type="datetime-local"
+                      id="currentTimeInput"
+                      name="requestDate"
+                      placeholder="Request Date"
+                      defaultValue={currentTime}
+                      className="input input-bordered"
+                      required
+                      readOnly={true}
+                    />
+                  </div>
+                </div>
+                <div className="flex">
+                  <div className="form-control w-1/2">
+                    <label className="label">
+                      <span className="label-text">Donor Email</span>
+                    </label>
+                    <input
+                      type="email"
+                      name="donorEmail"
+                      placeholder="Donor Email"
+                      defaultValue={food.email}
+                      className="input input-bordered"
+                      required
+                      readOnly={true}
+                    />
+                  </div>
+                  <div className="form-control w-1/2">
+                    <label className="label">
+                      <span className="label-text">User Email</span>
+                    </label>
+                    <input
+                      type="email"
+                      name="userEmail"
+                      placeholder="user@email.com"
+                      defaultValue={user?.email}
+                      className="input input-bordered"
+                      required
+                      readOnly={true}
+                    />
+                  </div>
+                </div>
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text">Donation Amount</span>
+                  </label>
+                  <input
+                    type="number"
+                    name="donationAmount"
+                    placeholder="$10"
+                    defaultValue={10}
+                    className="input input-bordered"
+                    required
+                  />
+                </div>
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text">Additional Notes</span>
                   </label>
                   <input
                     type="text"
-                    placeholder="Food Name"
-                    defaultValue={food.foodName}
+                    name="Notes"
+                    placeholder="Additional Notes"
+                    defaultValue={food.additionalNotes}
                     className="input input-bordered"
                     required
-                    readOnly={true}
                   />
                 </div>
-                <div className="form-control w-1/2">
-                  <label className="label">
-                    <span className="label-text">Food Id</span>
-                  </label>
+                <div className="form-control mt-6">
                   <input
-                    type="text"
-                    placeholder="Food Id"
-                    defaultValue={food._id}
-                    className="input input-bordered"
-                    required
-                    readOnly={true}
+                    className="btn bg-pink-700 text-white text-xl"
+                    type="submit"
+                    value="Request"
                   />
                 </div>
-              </div>
-              <div className="flex">
-                <div className="form-control w-1/2">
-                  <label className="label">
-                    <span className="label-text">Pickup Location</span>
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="Food Name"
-                    defaultValue={food.pickupLocation}
-                    className="input input-bordered"
-                    required
-                    readOnly={true}
-                  />
-                </div>
-                <div className="form-control w-1/2">
-                  <label className="label">
-                    <span className="label-text">Expire Date</span>
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="Food Id"
-                    defaultValue={food.expiredDate}
-                    className="input input-bordered"
-                    required
-                    readOnly={true}
-                  />
-                </div>
-              </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Food Image</span>
-                </label>
-                <img className="rounded-lg h-40" src={food.foodImage} alt="" />
-              </div>
-              <div className="flex">
-                <div className="form-control w-1/2">
-                  <label className="label">
-                    <span className="label-text">Donor Name</span>
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="Donor Name"
-                    defaultValue={food.displayName}
-                    className="input input-bordered"
-                    required
-                    readOnly={true}
-                  />
-                </div>
-                <div className="form-control w-1/2">
-                  <label className="label">
-                    <span className="label-text">Request Date</span>
-                  </label>
-                  <input
-                    type="datetime-local"
-                    id="currentTimeInput"
-                    placeholder="Request Date"
-                    defaultValue={currentTime}
-                    className="input input-bordered"
-                    required
-                    readOnly={true}
-                  />
-                </div>
-              </div>
-              <div className="flex">
-                <div className="form-control w-1/2">
-                  <label className="label">
-                    <span className="label-text">Donor Email</span>
-                  </label>
-                  <input
-                    type="email"
-                    placeholder="Donor Email"
-                    defaultValue={food.displayName}
-                    className="input input-bordered"
-                    required
-                    readOnly={true}
-                  />
-                </div>
-                <div className="form-control w-1/2">
-                  <label className="label">
-                    <span className="label-text">User Email</span>
-                  </label>
-                  <input
-                    type="email"
-                    placeholder="User Email"
-                    defaultValue={user.email}
-                    className="input input-bordered"
-                    required
-                    readOnly={true}
-                  />
-                </div>
-              </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Donation Amount</span>
-                </label>
-                <input
-                  type="number"
-                  placeholder="$100"
-                  defaultValue="$100"
-                  className="input input-bordered"
-                  required
-                />
-              </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Additional Notes</span>
-                </label>
-                <input
-                  type="text"
-                  placeholder="Additional Notes"
-                  defaultValue={food.additionalNotes}
-                  className="input input-bordered"
-                  required
-                />
-              </div>
-              <div className="form-control mt-6">
-                <button className="btn bg-pink-700 text-white text-xl">
-                  Request
-                </button>
-              </div>
-            </form>
-            <div className="modal-action">
-              <form method="dialog">
-                {/* if there is a button in form, it will close the modal */}
-                <button className="btn bg-red-500 text-white">Close</button>
               </form>
+              <div className="modal-action">
+                <form method="dialog">
+                  {/* if there is a button in form, it will close the modal */}
+                  <button className="btn bg-red-500 text-white">Close</button>
+                </form>
+              </div>
             </div>
-          </div>
         </dialog>
       </div>
     </div>

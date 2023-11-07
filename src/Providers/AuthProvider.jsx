@@ -11,13 +11,9 @@ import {
   updateProfile,
 } from "firebase/auth";
 
-
-
-
 export const AuthContext = createContext(null);
 
 const googleProvider = new GoogleAuthProvider();
-
 const auth = getAuth(app);
 
 const AuthProvider = ({ children }) => {
@@ -42,50 +38,47 @@ const AuthProvider = ({ children }) => {
       });
   };
 
-
   const signInWithGoogle = () => {
     setLoading(true);
     return signInWithPopup(auth, googleProvider);
   };
+
   const signOUT = () => {
     setLoading(true);
     return signOut(auth);
   };
 
   const updateProfileInfo = async (name, photo) => {
-    const currentUser = auth.currentUser; 
-
+    const currentUser = auth.currentUser;
     try {
       await updateProfile(currentUser, {
         displayName: name,
         photoURL: photo,
       });
 
-      setUser({
-        ...user,
+      setUser((prevUser) => ({
+        ...prevUser,
         displayName: name,
         photoURL: photo,
-      });
+      }));
     } catch (error) {
       console.error("Error updating profile:", error);
     }
   };
 
-
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
-      console.log(currentUser);
-      setUser(currentUser);
       setLoading(false);
 
-      
       if (currentUser) {
-        const { displayName, photoURL } = currentUser;
+        const { displayName, photoURL, email } = currentUser;
         setUser({
-          ...user,
           displayName,
           photoURL,
+          email,
         });
+      } else {
+        setUser(null);
       }
     });
     return () => {
