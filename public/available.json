@@ -8,7 +8,8 @@
     "pickupLocation": "123 Main Street",
     "expiredDate": "2023-11-07T12:00:00Z",
     "additionalNotes": "Please keep refrigerated.",
-    "email": "john.doe@example.com"
+    "email": "john.doe@example.com",
+    "available": "Available"
   },
   {
     "foodImage": "https://i.ibb.co/J299czy/green-salad.jpg",
@@ -19,7 +20,8 @@
     "pickupLocation": "456 Elm Street",
     "expiredDate": "2023-11-06T18:00:00Z",
     "additionalNotes": "No dressing, please.",
-    "email": "jane.doe@example.com"
+    "email": "jane.doe@example.com",
+    "available": "Available"
   },
   {
     "foodImage": "https://i.ibb.co/JvkBLrX/c5238f694e286b52d4ec3bc215d02efe-clubhouse-sandwich-944-531.jpg",
@@ -30,7 +32,8 @@
     "pickupLocation": "789 Maple Street",
     "expiredDate": "2023-11-07T20:00:00Z",
     "additionalNotes": "Gluten-free bread, please.",
-    "email": "peter.doe@example.com"
+    "email": "peter.doe@example.com",
+    "available": "Available"
   },
   {
     "foodImage": "https://i.ibb.co/GJbr14Q/crispy-comte-cheesburgers-FT-RECIPE0921-6166c6552b7148e8a8561f7765ddf20b.jpg",
@@ -41,7 +44,8 @@
     "pickupLocation": "567 Oak Avenue",
     "expiredDate": "2023-11-06T14:30:00Z",
     "additionalNotes": "Extra ketchup included.",
-    "email": "emily.doe@example.com"
+    "email": "emily.doe@example.com",
+    "available": "Available"
   },
   {
     "foodImage": "https://i.ibb.co/txcx8WL/Spaghetti-Bolognese-with-Basil-in-a-Plate.jpg",
@@ -52,7 +56,8 @@
     "pickupLocation": "456 Pine Road",
     "expiredDate": "2023-11-08T16:00:00Z",
     "additionalNotes": "Vegetarian pasta.",
-    "email": "micheal.doe@example.com"
+    "email": "micheal.doe@example.com",
+    "available": "Available"
   },
   {
     "foodImage": "https://i.ibb.co/3MkfYXS/sushi-sashimi-1296x728-header.jpg",
@@ -63,7 +68,8 @@
     "pickupLocation": "345 Cedar Lane",
     "expiredDate": "2023-11-09T18:30:00Z",
     "additionalNotes": "Assorted sushi rolls.",
-    "email": "ella.doe@example.com"
+    "email": "ella.doe@example.com",
+    "available": "Available"
   },
   {
     "foodImage": "https://i.ibb.co/7g9gXwD/Fresh-Fruit-Salad-06-480x270.jpg",
@@ -74,7 +80,8 @@
     "pickupLocation": "234 Birch Street",
     "expiredDate": "2023-11-07T15:00:00Z",
     "additionalNotes": "Freshly made fruit salad.",
-    "email": "daniel.doe@example.com"
+    "email": "daniel.doe@example.com",
+    "available": "Available"
   },
   {
     "foodImage": "https://i.ibb.co/ZLCXstN/chicken-noodle-soup-index-644c2bec1ce0c.jpg",
@@ -85,7 +92,8 @@
     "pickupLocation": "123 Willow Avenue",
     "expiredDate": "2023-11-08T13:00:00Z",
     "additionalNotes": "Homemade vegetable soup.",
-    "email": "olivia.doe@example.com"
+    "email": "olivia.doe@example.com",
+    "available": "Available"
   },
   {
     "foodImage": "https://i.ibb.co/8c0Cm17/Chicken-Wings-Recipe-Card.jpg",
@@ -96,7 +104,8 @@
     "pickupLocation": "678 Cedar Road",
     "expiredDate": "2023-11-06T17:45:00Z",
     "additionalNotes": "Spicy chicken wings.",
-    "email": "noah.doe@example.com"
+    "email": "noah.doe@example.com",
+    "available": "Available"
   },
   {
     "foodImage": "https://i.ibb.co/XkmMGbN/23600-worlds-best-lasagna-DDMFS-2x1-1193-40ded59b2a224312b66bdafbb885adc0.jpg",
@@ -107,7 +116,8 @@
     "pickupLocation": "789 Redwood Avenue",
     "expiredDate": "2023-11-09T19:30:00Z",
     "additionalNotes": "Classic meat lasagna.",
-    "email": "ava.doe@example.com"
+    "email": "ava.doe@example.com",
+    "available": "Available"
   },
   {
     "foodImage": "https://i.ibb.co/hLrMt5W/Burrito.jpg",
@@ -118,7 +128,8 @@
     "pickupLocation": "456 Cedar Street",
     "expiredDate": "2023-11-07T12:45:00Z",
     "additionalNotes": "Bean and cheese burritos.",
-    "email": "william.doe@example.com"
+    "email": "william.doe@example.com",
+    "available": "Available"
   },
   {
     "foodImage": "https://i.ibb.co/q5DVhHn/65338-Birria-de-Res-Tacos-ddmfs-2x1-2564-c6e52a4c6d784c64950b0250e1df1fe2.jpg",
@@ -129,7 +140,8 @@
     "pickupLocation": "567 Spruce Lane",
     "expiredDate": "2023-11-06T18:15:00Z",
     "additionalNotes": "Beef and chicken tacos.",
-    "email": "sophia.doe@example.com"
+    "email": "sophia.doe@example.com",
+    "available": "Available"
   },
   {
     "foodImage": "https://i.ibb.co/JmVJP1f/delish-230313-12-fried-rice-0842-eb-index-64220e8a7fc9a.jpg",
@@ -140,7 +152,8 @@
     "pickupLocation": "789 Pine Avenue",
     "expiredDate": "2023-11-07T14:00:00Z",
     "additionalNotes": "Vegetable fried rice.",
-    "email": "liam.doe@example.com"
+    "email": "liam.doe@example.com",
+    "available": "Available"
   },
   {
     "foodImage": "https://i.ibb.co/p2R248L/images-q-tbn-ANd9-Gc-Q-Q64nk-Udl-Rw-Z23dusq-Yx-GZb-Br-HLO61-Hw-Qhw-usqp-CAU.jpg",
@@ -151,7 +164,8 @@
     "pickupLocation": "234 Oak Road",
     "expiredDate": "2023-11-08T12:30:00Z",
     "additionalNotes": "Assorted donuts.",
-    "email": "donuts.doe@example.com"
+    "email": "donuts.doe@example.com",
+    "available": "Available"
   },
   {
     "foodImage": "https://i.ibb.co/RHtZqCj/e3dcd5ea-10b3-41c2-9288-053f804d3ce8.jpg",
@@ -162,7 +176,8 @@
     "pickupLocation": "123 Maple Street",
     "expiredDate": "2023-11-07T16:30:00Z",
     "additionalNotes": "Sauce on the side.",
-    "email": "ethan.doe@example.com"
+    "email": "ethan.doe@example.com",
+    "available": "Available"
   },
   {
     "foodImage": "https://i.ibb.co/XWPH9Tv/easy-basic-pancakes-horiz-1022-0-f13ba897aba6423db7901ca826595244.jpg",
@@ -173,7 +188,8 @@
     "pickupLocation": "345 Birch Lane",
     "expiredDate": "2023-11-09T09:00:00Z",
     "additionalNotes": "Butter and syrup included.",
-    "email": "mia.doe@example.com"
+    "email": "mia.doe@example.com",
+    "available": "Available"
   },
   {
     "foodImage": "https://i.ibb.co/9N3nZMC/p028w7z2.jpg",
@@ -184,7 +200,8 @@
     "pickupLocation": "456 Willow Road",
     "expiredDate": "2023-11-07T15:45:00Z",
     "additionalNotes": "Pork and beef sausages.",
-    "email": "lucas.doe@example.com"
+    "email": "lucas.doe@example.com",
+    "available": "Available"
   },
   {
     "foodImage": "https://i.ibb.co/DwJcWLK/Blueberry-Muffins-Culinary-Hill-1200x800-1.jpg",
@@ -195,7 +212,8 @@
     "pickupLocation": "678 Cedar Street",
     "expiredDate": "2023-11-06T20:15:00Z",
     "additionalNotes": "Blueberry muffins.",
-    "email": "muffins.doe@example.com"
+    "email": "muffins.doe@example.com",
+    "available": "Available"
   },
   {
     "foodImage": "https://i.ibb.co/xH52dSf/a8adc6bf-52a6-4428-ae42-5a59697a226c.jpg",
@@ -206,7 +224,8 @@
     "pickupLocation": "234 Redwood Lane",
     "expiredDate": "2023-11-09T18:00:00Z",
     "additionalNotes": "Spaghetti with marinara sauce.",
-    "email": "henry.doe@example.com"
+    "email": "henry.doe@example.com",
+    "available": "Available"
   },
   {
     "foodImage": "https://i.ibb.co/QQ8ksxR/1fd8d4fb87e9ecc7b8d1c7b50c6ccaeb-nksb04s1-d01-5040-944-531.jpg",
@@ -217,6 +236,7 @@
     "pickupLocation": "567 Spruce Street",
     "expiredDate": "2023-11-07T13:15:00Z",
     "additionalNotes": "Crispy fried chicken.",
-    "email": "amelia.doe@example.com"
+    "email": "amelia.doe@example.com",
+    "available": "Available"
   }
 ]

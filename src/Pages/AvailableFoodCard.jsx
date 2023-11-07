@@ -4,23 +4,28 @@ import { Link } from "react-router-dom";
 const AvailableFoodCard = ({ food }) => {
     
   const {
-      _id,
-      foodImage,
-      foodName,
-      foodQuantity,
-      displayName,
-      photoURL,
-      pickupLocation,
-      expiredDate,
-      additionalNotes,
-    } = food;
+    _id,
+    foodImage,
+    foodName,
+    foodQuantity,
+    displayName,
+    photoURL,
+    pickupLocation,
+    expiredDate,
+    additionalNotes,
+    available,
+  } = food;
 
     return (
       <div>
         <div className="card h-[500px] glass">
           <figure>
-            <img className="w-full" src={foodImage} alt="car!" />
+            <img className="w-full relative" src={foodImage} alt="car!" />
+            <span className="indicator-item badge text-white bg-pink-700 right-0 top-0 absolute">
+              {available}
+            </span>
           </figure>
+          <div className="indicator"></div>
           <div className="card-body">
             <div className="flex items-center justify-between">
               {" "}
