@@ -1,4 +1,5 @@
-import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
+
 
 
 const ManageRow = ({ manage, handleDelete }) => {
@@ -63,9 +64,12 @@ const ManageRow = ({ manage, handleDelete }) => {
         <div className="flex flex-col md:flex-row">
           <td>Quantity: {manage.foodQuantity}</td>
           <th>
-            <button className="btn bg-pink-700 text-white btn-xs">
+            <Link
+              to={`/manage/${_id}`}
+              className="btn bg-pink-700 text-white btn-xs"
+            >
               Update
-            </button>
+            </Link>
           </th>
         </div>
       </tr>

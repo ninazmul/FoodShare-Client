@@ -1,4 +1,3 @@
-
 import { createBrowserRouter } from "react-router-dom";
 import Home from "../Pages/Home/Home";
 import Root from "../Layout/Root";
@@ -12,7 +11,7 @@ import SignIn from "../Pages/LogReg/SignIn";
 import SignUp from "../Pages/LogReg/SignUp";
 import PrivateRoute from "./PrivateRoute";
 import FoodDetails from "../Pages/FoodDetails";
-
+import UpdateFood from "../Pages/UpdateFood";
 
 const router = createBrowserRouter([
   {
@@ -51,6 +50,20 @@ const router = createBrowserRouter([
             <ManageFood></ManageFood>
           </PrivateRoute>
         ),
+      },
+      {
+        path: "/manage/:id",
+        element: (
+          <PrivateRoute>
+            <UpdateFood></UpdateFood>
+          </PrivateRoute>
+        ),
+        loader: async ({ params }) => {
+          const { id } = params;
+          const response = await fetch(`http://localhost:5000/available/${id}`);
+          const data = await response.json();
+          return data;
+        },
       },
       {
         path: "/request",

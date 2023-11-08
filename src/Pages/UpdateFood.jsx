@@ -1,78 +1,78 @@
-
 import { useContext } from "react";
-import Swal from "sweetalert2";
+import { useLoaderData, useParams } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
+import Swal from "sweetalert2";
 
-const AddFood = () => {
+const UpdateFood = () => {
+  const food = useLoaderData();
+  const { user } = useContext(AuthContext);
+  const { id } = useParams();
 
+  const handleUpdate = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const foodName = form.foodName.value;
+    const foodQuantity = form.foodQuantity.value;
+    const pickupLocation = form.pickupLocation.value;
+    const expiredDate = form.expiredDate.value;
+    const foodImage = form.foodImage.value;
+    const photoURL = form.photoURL.value;
+    const requestDate = form.requestDate.value;
+    const displayName = form.displayName.value;
+    const email = form.email.value;
+    const donationAmount = form.donationAmount.value;
+    const additionalNotes = form.additionalNotes.value;
+    const available = form.available.value;
 
-    const { user } = useContext(AuthContext);
+    const updateFood = {
+      _id: id,
+      foodName,
+      pickupLocation,
+      expiredDate,
+      foodImage,
+      displayName,
+      requestDate,
+      email,
+      donationAmount,
+      additionalNotes,
+      foodQuantity,
+      photoURL,
+      available,
+    };
+    console.log(updateFood);
 
-    
-const handleAdd = (e) => {
-  e.preventDefault();
-  const form = e.target;
-  const foodName = form.foodName.value;
-  const foodQuantity = form.foodQuantity.value;
-  const pickupLocation = form.pickupLocation.value;
-  const expiredDate = form.expiredDate.value;
-  const foodImage = form.foodImage.value;
-  const photoURL = form.photoURL.value;
-  const requestDate = form.requestDate.value;
-  const displayName = form.displayName.value;
-  const email = form.email.value;
-  const donationAmount = form.donationAmount.value;
-  const additionalNotes = form.additionalNotes.value;
-  const available = form.available.value;
-
-  const addNew = {
-    foodName,
-    pickupLocation,
-    expiredDate,
-    foodImage,
-    displayName,
-    requestDate,
-    email,
-    donationAmount,
-    additionalNotes,
-    foodQuantity,
-    photoURL,
-    available 
+    fetch(`http://localhost:5000/available/${id}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(updateFood),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.insertedId) {
+          Swal.fire({
+            title: "Successful!",
+            text: "Updated Successfully!",
+            icon: "success",
+            confirmButtonText: "Cool",
+          });
+        }
+      });
   };
-  console.log(addNew);
-
-  fetch("http://localhost:5000/available", {
-    method: "POST",
-    headers: {
-      "content-type": "application/json",
-    },
-    body: JSON.stringify(addNew),
-  })
-    .then((res) => res.json())
-    .then((data) => {
-      console.log(data);
-      if (data.insertedId) {
-        Swal.fire({
-          title: "Successful!",
-          text: "Added Successfully!",
-          icon: "success",
-          confirmButtonText: "Cool",
-        });
-      }
-    });
-};
 
   return (
     <div>
       <div>
         <h1 className="text-5xl text-pink-700 font-bold text-center">
-          Add New Food
+          Update Food
         </h1>
       </div>
       <div className="hero min-h-screen ">
         <div className="hero-content flex-col lg:flex-row-reverse">
           <div className="card  md:w-full shadow-2xl glass">
-            <form onSubmit={handleAdd} className="card-body">
+            <form onSubmit={handleUpdate} className="card-body">
               <div className="md:flex">
                 <div className="form-control">
                   <label className="label">
@@ -82,6 +82,7 @@ const handleAdd = (e) => {
                     type="text"
                     name="foodName"
                     placeholder="Food Name"
+                    defaultValue={food.foodName}
                     className="input input-bordered"
                     required
                   />
@@ -94,6 +95,7 @@ const handleAdd = (e) => {
                     type="number"
                     name="foodQuantity"
                     placeholder="Food Quantity"
+                    defaultValue={food.foodQuantity}
                     className="input input-bordered"
                     required
                   />
@@ -108,6 +110,7 @@ const handleAdd = (e) => {
                     type="text"
                     name="pickupLocation"
                     placeholder="Pickup Location"
+                    defaultValue={food.pickupLocation}
                     className="input input-bordered"
                     required
                   />
@@ -122,6 +125,7 @@ const handleAdd = (e) => {
                     type="text"
                     name="foodImage"
                     placeholder="Food Image"
+                    defaultValue={food.foodImage}
                     className="input input-bordered"
                     required
                   />
@@ -148,6 +152,7 @@ const handleAdd = (e) => {
                     type="datetime-local"
                     name="requestDate"
                     placeholder="Request Date"
+                    defaultValue={food.requestDate}
                     className="input input-bordered"
                     required
                   />
@@ -160,6 +165,7 @@ const handleAdd = (e) => {
                     type="datetime-local"
                     name="expiredDate"
                     placeholder="Food Id"
+                    defaultValue={food.expiredDate}
                     className="input input-bordered"
                     required
                   />
@@ -226,6 +232,7 @@ const handleAdd = (e) => {
                   type="text"
                   name="additionalNotes"
                   placeholder="Additional Notes"
+                  defaultValue={food.additionalNotes}
                   className="input input-bordered"
                 />
               </div>
@@ -233,7 +240,7 @@ const handleAdd = (e) => {
                 <input
                   className="btn bg-pink-700 text-white text-xl"
                   type="submit"
-                  value="Add"
+                  value="Update"
                 />
               </div>
             </form>
@@ -244,4 +251,4 @@ const handleAdd = (e) => {
   );
 };
 
-export default AddFood;
+export default UpdateFood;
