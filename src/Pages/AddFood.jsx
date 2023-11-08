@@ -1,67 +1,69 @@
-
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../Providers/AuthProvider";
 
 const AddFood = () => {
+  const { user } = useContext(AuthContext);
 
+  const [available, setAvailable] = useState("Available");
 
-    const { user } = useContext(AuthContext);
-
-    
-const handleAdd = (e) => {
-  e.preventDefault();
-  const form = e.target;
-  const foodName = form.foodName.value;
-  const foodQuantity = form.foodQuantity.value;
-  const pickupLocation = form.pickupLocation.value;
-  const expiredDate = form.expiredDate.value;
-  const foodImage = form.foodImage.value;
-  const photoURL = form.photoURL.value;
-  const requestDate = form.requestDate.value;
-  const displayName = form.displayName.value;
-  const email = form.email.value;
-  const donationAmount = form.donationAmount.value;
-  const additionalNotes = form.additionalNotes.value;
-  const available = form.available.value;
-
-  const addNew = {
-    foodName,
-    pickupLocation,
-    expiredDate,
-    foodImage,
-    displayName,
-    requestDate,
-    email,
-    donationAmount,
-    additionalNotes,
-    foodQuantity,
-    photoURL,
-    available 
+  const toggleAvailable = () => {
+    setAvailable((prevAvailable) =>
+      prevAvailable === "Available" ? "Delivered" : "Available"
+    );
   };
-  console.log(addNew);
 
-  fetch("http://localhost:5000/available", {
-    method: "POST",
-    headers: {
-      "content-type": "application/json",
-    },
-    body: JSON.stringify(addNew),
-  })
-    .then((res) => res.json())
-    .then((data) => {
-      console.log(data);
-      if (data.insertedId) {
-        Swal.fire({
-          title: "Successful!",
-          text: "Added Successfully!",
-          icon: "success",
-          confirmButtonText: "Cool",
-        });
-      }
-    });
-};
+  const handleAdd = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const foodName = form.foodName.value;
+    const foodQuantity = form.foodQuantity.value;
+    const pickupLocation = form.pickupLocation.value;
+    const expiredDate = form.expiredDate.value;
+    const foodImage = form.foodImage.value;
+    const photoURL = form.photoURL.value;
+    const requestDate = form.requestDate.value;
+    const displayName = form.displayName.value;
+    const email = form.email.value;
+    const donationAmount = form.donationAmount.value;
+    const additionalNotes = form.additionalNotes.value;
 
+    const addNew = {
+      foodName,
+      pickupLocation,
+      expiredDate,
+      foodImage,
+      displayName,
+      requestDate,
+      email,
+      donationAmount,
+      additionalNotes,
+      foodQuantity,
+      photoURL,
+      available,
+    };
+    console.log(addNew);
+
+    fetch("http://localhost:5000/available", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(addNew),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.insertedId) {
+          Swal.fire({
+            title: "Successful!",
+            text: "Added Successfully!",
+            icon: "success",
+            confirmButtonText: "Cool",
+          });
+        }
+      });
+  };
   return (
     <div>
       <div>
@@ -208,14 +210,30 @@ const handleAdd = (e) => {
                   <label className="label">
                     <span className="label-text">Available Status</span>
                   </label>
-                  <input
-                    type="text"
-                    name="available"
-                    placeholder="Is it Available"
-                    defaultValue="Available"
-                    className="input input-bordered"
-                    required
-                  />
+                  <div className="flex space-x-4">
+                    <button
+                      type="button"
+                      className={`btn ${
+                        available === "Available"
+                          ? "btn-primary"
+                          : "btn-secondary"
+                      }`}
+                      onClick={toggleAvailable}
+                    >
+                      Available
+                    </button>
+                    <button
+                      type="button"
+                      className={`btn ${
+                        available === "Delivered"
+                          ? "btn-primary"
+                          : "btn-secondary"
+                      }`}
+                      onClick={toggleAvailable}
+                    >
+                      Delivered
+                    </button>
+                  </div>
                 </div>
               </div>
               <div className="form-control">
