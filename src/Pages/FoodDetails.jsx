@@ -86,7 +86,6 @@ const FoodDetails = () => {
 
     fetchFoodData();
 
-    // Use a setTimeout to ensure that the DOM element is available
     setTimeout(() => {
       const currentTimeInput = document.getElementById("currentTimeInput");
       if (currentTimeInput) {

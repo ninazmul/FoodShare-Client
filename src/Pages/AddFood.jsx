@@ -15,26 +15,26 @@ const handleAdd = (e) => {
   const foodName = form.foodName.value;
   const foodQuantity = form.foodQuantity.value;
   const pickupLocation = form.pickupLocation.value;
-  const expireDate = form.expireDate.value;
+  const expiredDate = form.expiredDate.value;
   const foodImage = form.foodImage.value;
   const photoURL = form.photoURL.value;
   const requestDate = form.requestDate.value;
-  const donorName = form.displayName.value;
+  const displayName = form.displayName.value;
   const email = form.email.value;
   const donationAmount = form.donationAmount.value;
-  const Notes = form.Notes.value;
+  const additionalNotes = form.additionalNotes.value;
   const available = form.available.value;
 
   const addNew = {
     foodName,
     pickupLocation,
-    expireDate,
+    expiredDate,
     foodImage,
-    donorName,
+    displayName,
     requestDate,
     email,
     donationAmount,
-    Notes,
+    additionalNotes,
     foodQuantity,
     photoURL,
     available 
@@ -152,7 +152,7 @@ const handleAdd = (e) => {
                 </label>
                 <input
                   type="datetime-local"
-                  name="expireDate"
+                  name="expiredDate"
                   placeholder="Food Id"
                   className="input input-bordered"
                   required
@@ -218,7 +218,7 @@ const handleAdd = (e) => {
               </label>
               <input
                 type="text"
-                name="Notes"
+                name="additionalNotes"
                 placeholder="Additional Notes"
                 className="input input-bordered"
               />
