@@ -8,7 +8,7 @@ const FoodDetails = () => {
   const [food, setFood] = useState(null);
   const { user } = useContext(AuthContext);
 
-  const handleRequest = e => {
+  const handleRequest = (e) => {
     e.preventDefault();
     const form = e.target;
     const foodName = form.foodName.value;
@@ -25,7 +25,6 @@ const FoodDetails = () => {
     const available = form.available.value;
     const photoURL = form.photoURL.value;
     const foodQuantity = form.foodQuantity.value;
-
 
     const newRequest = {
       foodName,
@@ -45,7 +44,7 @@ const FoodDetails = () => {
     };
     console.log(newRequest);
 
-    fetch("http://localhost:5000/requested", {
+    fetch("https://food-share-server-pink.vercel.app/requested", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -57,22 +56,23 @@ const FoodDetails = () => {
         console.log(data);
         if (data.insertedId) {
           Swal.fire({
-            title: 'Successful!',
-            text: 'Requested Successfully!',
-            icon: 'success',
-            confirmButtonText: 'Cool'
-          })
+            title: "Successful!",
+            text: "Requested Successfully!",
+            icon: "success",
+            confirmButtonText: "Cool",
+          });
         }
       });
   };
-
 
   const currentTime = new Date().toISOString().slice(0, 16);
 
   useEffect(() => {
     const fetchFoodData = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/available/${id}`);
+        const response = await fetch(
+          `https://food-share-server-pink.vercel.app/available/${id}`
+        );
         if (response.ok) {
           const data = await response.json();
           setFood(data);

@@ -44,7 +44,7 @@ const AddFood = () => {
     };
     console.log(addNew);
 
-    fetch("http://localhost:5000/available", {
+    fetch("https://food-share-server-pink.vercel.app/available", {
       method: "POST",
       headers: {
         "content-type": "application/json",

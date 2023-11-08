@@ -1,4 +1,3 @@
-
 import Swal from "sweetalert2";
 
 const RequestedFoodCard = ({ request }) => {
@@ -18,7 +17,7 @@ const RequestedFoodCard = ({ request }) => {
     if (available === "Available") {
       try {
         const response = await fetch(
-          `http://localhost:5000/requested/${request._id}`,
+          `https://food-share-server-pink.vercel.app/requested/${request._id}`,
           {
             method: "DELETE",
           }

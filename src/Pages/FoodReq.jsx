@@ -1,20 +1,19 @@
 import { useEffect, useState } from "react";
 import RequestedFoodCard from "./RequestedFoodCard";
 
-
 const FoodReq = () => {
   const [Requested, setRequested] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [sortOrder, setSortOrder] = useState("ascending");
 
- useEffect(() => {
-   fetch("http://localhost:5000/requested")
-     .then((res) => res.json())
-     .then((data) => {
-       setRequested(data);
-       console.log(data);
-     });
- }, []);
+  useEffect(() => {
+    fetch("https://food-share-server-pink.vercel.app/requested")
+      .then((res) => res.json())
+      .then((data) => {
+        setRequested(data);
+        console.log(data);
+      });
+  }, []);
 
   const filteredRequestedFoods = Requested.filter((food) =>
     food.foodName.toLowerCase().includes(searchQuery.toLowerCase())
@@ -34,7 +33,7 @@ const FoodReq = () => {
   const handleSort = () => {
     setSortOrder(sortOrder === "ascending" ? "descending" : "ascending");
   };
-console.log(sortedRequestedFoods);
+  console.log(sortedRequestedFoods);
   return (
     <div>
       <div className="py-6">
@@ -56,7 +55,10 @@ console.log(sortedRequestedFoods);
       </div>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
         {sortedRequestedFoods.map((request) => (
-          <RequestedFoodCard key={request._id} request={request}></RequestedFoodCard>
+          <RequestedFoodCard
+            key={request._id}
+            request={request}
+          ></RequestedFoodCard>
         ))}
       </div>
     </div>

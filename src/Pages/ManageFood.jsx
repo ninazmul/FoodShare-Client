@@ -9,7 +9,9 @@ const ManageFood = () => {
   const [available, setAvailable] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/available?email=${user.email}`)
+    fetch(
+      `https://food-share-server-pink.vercel.app/available?email=${user.email}`
+    )
       .then((res) => res.json())
       .then((data) => setAvailable(data));
   }, []);
@@ -17,7 +19,7 @@ const ManageFood = () => {
   const handleDelete = (id) => {
     const proceed = confirm("Are you sure you want to delete this food item?");
     if (proceed) {
-      fetch(`http://localhost:5000/available/${id}`, {
+      fetch(`https://food-share-server-pink.vercel.app/available/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())
@@ -72,7 +74,7 @@ const ManageFood = () => {
                 <ManageRow
                   key={manage._id}
                   manage={manage}
-                  handleDelete={handleDelete} // Pass the handleDelete prop
+                  handleDelete={handleDelete}
                 ></ManageRow>
               ))}
             </tbody>

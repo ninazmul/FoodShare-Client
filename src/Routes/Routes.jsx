@@ -60,7 +60,9 @@ const router = createBrowserRouter([
         ),
         loader: async ({ params }) => {
           const { id } = params;
-          const response = await fetch(`http://localhost:5000/available/${id}`);
+          const response = await fetch(
+            `https://food-share-server-pink.vercel.app/available/${id}`
+          );
           const data = await response.json();
           return data;
         },

@@ -8,66 +8,66 @@ const UpdateFood = () => {
   const { user } = useContext(AuthContext);
   const { id } = useParams();
 
-    const [available, setAvailable] = useState(food.available || "Available");
+  const [available, setAvailable] = useState(food.available || "Available");
 
-    const toggleAvailable = () => {
-      setAvailable((prevAvailable) =>
-        prevAvailable === "Available" ? "Delivered" : "Available"
-      );
-    };
-
-const handleUpdate = (e) => {
-  e.preventDefault();
-  const form = e.target;
-  const foodName = form.foodName.value;
-  const foodQuantity = form.foodQuantity.value;
-  const pickupLocation = form.pickupLocation.value;
-  const expiredDate = form.expiredDate.value;
-  const foodImage = form.foodImage.value;
-  const photoURL = form.photoURL.value;
-  const requestDate = form.requestDate.value;
-  const displayName = form.displayName.value;
-  const email = form.email.value;
-  const donationAmount = form.donationAmount.value;
-  const additionalNotes = form.additionalNotes.value;
-
-  const updateFood = {
-    _id: id,
-    foodName,
-    pickupLocation,
-    expiredDate,
-    foodImage,
-    displayName,
-    requestDate,
-    email,
-    donationAmount,
-    additionalNotes,
-    foodQuantity,
-    photoURL,
-    available, // Use the available state variable
+  const toggleAvailable = () => {
+    setAvailable((prevAvailable) =>
+      prevAvailable === "Available" ? "Delivered" : "Available"
+    );
   };
-  console.log(updateFood);
 
-  fetch(`http://localhost:5000/available/${id}`, {
-    method: "PUT",
-    headers: {
-      "content-type": "application/json",
-    },
-    body: JSON.stringify(updateFood),
-  })
-    .then((res) => res.json())
-    .then((data) => {
-      console.log(data);
-      if (data.insertedId) {
-        Swal.fire({
-          title: "Successful!",
-          text: "Added Successfully!",
-          icon: "success",
-          confirmButtonText: "Cool",
-        });
-      }
-    });
-};
+  const handleUpdate = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const foodName = form.foodName.value;
+    const foodQuantity = form.foodQuantity.value;
+    const pickupLocation = form.pickupLocation.value;
+    const expiredDate = form.expiredDate.value;
+    const foodImage = form.foodImage.value;
+    const photoURL = form.photoURL.value;
+    const requestDate = form.requestDate.value;
+    const displayName = form.displayName.value;
+    const email = form.email.value;
+    const donationAmount = form.donationAmount.value;
+    const additionalNotes = form.additionalNotes.value;
+
+    const updateFood = {
+      _id: id,
+      foodName,
+      pickupLocation,
+      expiredDate,
+      foodImage,
+      displayName,
+      requestDate,
+      email,
+      donationAmount,
+      additionalNotes,
+      foodQuantity,
+      photoURL,
+      available, // Use the available state variable
+    };
+    console.log(updateFood);
+
+    fetch(`https://food-share-server-pink.vercel.app/available/${id}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(updateFood),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.insertedId) {
+          Swal.fire({
+            title: "Successful!",
+            text: "Added Successfully!",
+            icon: "success",
+            confirmButtonText: "Cool",
+          });
+        }
+      });
+  };
   return (
     <div>
       <div>

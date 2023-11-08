@@ -7,7 +7,7 @@ const AvailableFood = () => {
   const [sortOrder, setSortOrder] = useState("ascending");
 
   useEffect(() => {
-    fetch("http://localhost:5000/available")
+    fetch("https://food-share-server-pink.vercel.app/available")
       .then((res) => res.json())
       .then((data) => setAvailable(data));
   }, []);
