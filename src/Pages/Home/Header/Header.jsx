@@ -37,11 +37,12 @@ const Header = () => {
               </div>
             </div>
           </div>
+
           <div className="carousel w-full">
             <div id="slide1" className="carousel-item relative w-full">
               <img
-                src="./public/banner/close-up-people-holding-apples-bag.jpg"
-                className="w-full h-[500px] hero-overlay bg-opacity-60"
+                src="https://i.ibb.co/3fG8B56/close-up-people-holding-apples-bag.jpg"
+                className="w-full rounded-lg h-[500px] hero-overlay bg-opacity-60"
               />
               <div className="absolute z-20 flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
                 <a
@@ -60,8 +61,8 @@ const Header = () => {
             </div>
             <div id="slide2" className="carousel-item relative w-full">
               <img
-                src="./public/banner/person-helping-their-elder-neighbour.jpg"
-                className="w-full h-[500px]"
+                src="https://i.ibb.co/JvyN8BG/person-helping-their-elder-neighbour.jpg"
+                className="w-full rounded-lg h-[500px]"
               />
               <div className="absolute z-20 flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
                 <a
@@ -80,8 +81,8 @@ const Header = () => {
             </div>
             <div id="slide3" className="carousel-item relative w-full">
               <img
-                src="./public/banner/volunteer-collecting-donation-box-from-another-volunteer.jpg"
-                className="w-full h-[500px]"
+                src="https://i.ibb.co/xsfT9tb/volunteer-collecting-donation-box-from-another-volunteer.jpg"
+                className="w-full rounded-lg h-[500px]"
               />
               <div className="absolute z-20 flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
                 <a
@@ -100,8 +101,8 @@ const Header = () => {
             </div>
             <div id="slide4" className="carousel-item relative w-full">
               <img
-                src="./public/banner/woman-offering-food-neighbor.jpg"
-                className="w-full h-[500px]"
+                src="https://i.ibb.co/QYKsC1z/woman-offering-food-neighbor.jpg"
+                className="w-full rounded-lg h-[500px]"
               />
               <div className="absolute z-20 flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
                 <a

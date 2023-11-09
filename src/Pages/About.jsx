@@ -6,7 +6,7 @@ const About = () => {
         <div className="py-4 space-y-4">
           <img
             className="h-[500px] w-full rounded-lg"
-            src="./public/banner/close-up-people-holding-apples-bag.jpg"
+            src="https://i.ibb.co/3fG8B56/close-up-people-holding-apples-bag.jpg"
             alt=""
           />
           <h1 className="text-5xl text-pink-700 font-bold text-center">
@@ -23,7 +23,7 @@ const About = () => {
         <div className="py-4 space-y-4">
           <img
             className="h-[500px] w-full rounded-lg"
-            src="./public/banner/person-helping-their-elder-neighbour.jpg"
+            src="https://i.ibb.co/JvyN8BG/person-helping-their-elder-neighbour.jpg"
             alt=""
           />
           <h1 className="text-5xl text-pink-700 font-bold text-center">
@@ -39,7 +39,7 @@ const About = () => {
         <div className="py-4 space-y-4">
           <img
             className="h-[500px] w-full rounded-lg"
-            src="./public/banner/volunteer-collecting-donation-box-from-another-volunteer.jpg"
+            src="https://i.ibb.co/xsfT9tb/volunteer-collecting-donation-box-from-another-volunteer.jpg"
             alt=""
           />
           <h1 className="text-5xl text-pink-700 font-bold text-center">
@@ -55,7 +55,7 @@ const About = () => {
         <div className="py-4 space-y-4">
           <img
             className="h-[500px] w-full rounded-lg"
-            src="./public/banner/woman-offering-food-neighbor.jpg"
+            src="https://i.ibb.co/QYKsC1z/woman-offering-food-neighbor.jpg"
             alt=""
           />
           <h1 className="text-5xl text-pink-700 font-bold text-center">

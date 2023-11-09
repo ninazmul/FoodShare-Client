@@ -6,7 +6,11 @@ const Footer = () => {
       <div>
         <footer className="footer p-10  text-base-content">
           <aside>
-            <img className="w-52" src="/public/Screenshot_from_2023-11-05_12-27-59-removebg-preview.png" alt="" />
+            <img
+              className="w-52"
+              src="https://i.ibb.co/yRHD0Lk/Screenshot-from-2023-11-05-12-27-59-removebg-preview.png"
+              alt=""
+            />
             <p>
               FoodShare Unity.
               <br />
@@ -15,13 +19,16 @@ const Footer = () => {
           </aside>
           <nav>
             <header className="footer-title">Services</header>
-            <Link to='/available' className="link link-hover">Food Provide</Link>
+            <Link to="/available" className="link link-hover">
+              Food Provide
+            </Link>
             <a className="link link-hover">Donation</a>
           </nav>
           <nav>
             <header className="footer-title">Company</header>
-            <Link to='/about' className="link link-hover">About us</Link>
-            
+            <Link to="/about" className="link link-hover">
+              About us
+            </Link>
           </nav>
           <nav>
             <header className="footer-title">Legal</header>

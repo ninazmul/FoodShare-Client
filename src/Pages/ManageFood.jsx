@@ -10,7 +10,8 @@ const ManageFood = () => {
 
   useEffect(() => {
     fetch(
-      `https://food-share-server-pink.vercel.app/available?email=${user.email}`
+      `https://food-share-server-pink.vercel.app/available?email=${user?.email}`,
+      { credentials: "include" }
     )
       .then((res) => res.json())
       .then((data) => setAvailable(data));

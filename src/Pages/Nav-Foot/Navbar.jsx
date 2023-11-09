@@ -109,7 +109,7 @@ const Navbar = () => {
             <Link className="btn btn-ghost normal-case text-xl">
               <img
                 className="w-32"
-                src="/public/Screenshot_from_2023-11-05_12-27-59-removebg-preview.png"
+                src="https://i.ibb.co/yRHD0Lk/Screenshot-from-2023-11-05-12-27-59-removebg-preview.png"
                 alt=""
               />
             </Link>

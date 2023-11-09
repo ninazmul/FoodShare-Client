@@ -10,6 +10,7 @@ import {
   signOut,
   updateProfile,
 } from "firebase/auth";
+import axios from "axios";
 
 export const AuthContext = createContext(null);
 
@@ -69,15 +70,38 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       setLoading(false);
+      const userEmail = currentUser?.email || user.email;
+
+      const loggedUser = { email: userEmail };
 
       if (currentUser) {
         const { displayName, photoURL, email } = currentUser;
+
         setUser({
           displayName,
           photoURL,
           email,
         });
+
+        axios
+          .post("https://food-share-server-pink.vercel.app/jwt", loggedUser, {
+            withCredentials: true,
+          })
+          .then((res) => {
+            console.log("token response", res.data);
+          });
       } else {
+        axios
+          .post(
+            "https://food-share-server-pink.vercel.app/signOut",
+            loggedUser,
+            {
+              withCredentials: true,
+            }
+          )
+          .then((res) => {
+            console.log(res.data);
+          });
         setUser(null);
       }
     });
